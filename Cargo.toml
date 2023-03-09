@@ -2,7 +2,7 @@
 name = "string-sections"
 license = "MIT"
 repository = "https://github.com/akesson/string-sections"
-description = "Build tool for Leptos."
+description = "A line-based section iterator for strings."
 categories = ["parsing", "text-processing"]
 keywords = ["string", "parse", "line", "section", "iter"]
 version = "0.1.0"
