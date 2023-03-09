@@ -8,18 +8,22 @@ pub struct SectionSpan<'a> {
     pub end_line: LineSpan<'a>,
 }
 
+const LBR: &[char] = &['\n', '\r'];
+
 impl<'a> SectionSpan<'a> {
-    /// Returns the byte index range of the start and
-    /// end of the line, excluding the line ending
-    /// part `\n` or `\r\n`.
-    pub fn range(&self) -> Range<usize> {
+    /// Returns the byte index range of the section, excluding the start and end lines
+    pub fn inner_range(&self) -> Range<usize> {
         self.start_line.end..self.end_line.start
     }
 
-    /// Returns `&str` of the line, excluding `\n` and `\r\n`.
+    /// Returns the byte index range of the section, including the start and end lines
+    pub fn outer_range(&self) -> Range<usize> {
+        self.start_line.start..self.end_line.end
+    }
+
+    /// Returns section content as `&str`
     pub fn as_str(&self) -> &'a str {
-        let lbr: &[_] = &['\n', '\r'];
-        &self.start_line.text[self.range()].trim_matches(lbr)
+        &self.start_line.text[self.inner_range()].trim_matches(LBR)
     }
 }
 

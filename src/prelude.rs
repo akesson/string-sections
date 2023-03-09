@@ -1,7 +1,9 @@
 use crate::{LineSpan, SectionFinder, SectionFnFinder, SectionIter, SectionSpan};
 
 pub trait Sections {
+    /// Iterate over sections as found by an implementation of [`SectionFinder`]
     fn sections_find<'a, F: SectionFinder>(&'a self, finder: F) -> SectionIter<'a, F>;
+    /// Iterate over sections as found by an the provided closures
     fn sections<'a, S, E>(&'a self, start: S, end: E) -> SectionIter<'a, SectionFnFinder<S, E>>
     where
         S: Fn(&LineSpan) -> bool,
