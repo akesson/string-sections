@@ -1,5 +1,10 @@
 [package]
 name = "string-sections"
+license = "MIT"
+repository = "https://github.com/akesson/string-sections"
+description = "Build tool for Leptos."
+categories = ["parsing-tools", "text-processing"]
+keywords = ["string", "parse", "line", "section", "iter"]
 version = "0.1.0"
 edition = "2021"
 
